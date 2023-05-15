@@ -8,8 +8,14 @@ public class CRUDUber {
        ArrayList<Motorista> listaMotoristas = new ArrayList<Motorista>();
        ArrayList<Passageiro> listaPassageiros =  new ArrayList<Passageiro>();
        
+              MostraMotoristas(listaMotoristas, 0);
+
        listaMotoristas.add(CriarMotorista());
        MostraMotoristas(listaMotoristas, 0);
+       DeletarMotorista(listaMotoristas, "dudu");
+       MostraMotoristas(listaMotoristas, 0);
+       MostraPassageiro(listaPassageiros, 0);
+       DeletarPassageiro(listaPassageiros, "dudu");
     }
     
     //----------------- SCANNER PARAR LER GLOBALMENTE ------------------------
@@ -81,8 +87,78 @@ public class CRUDUber {
     public static void DeletarMotorista(ArrayList<Motorista> listMotoristas, String nomeMotorista){
         for (Motorista mot : listMotoristas) {
             if (mot.getNome().equals(nomeMotorista)){
-                System.out.println("Voce deletou a habilidade: " + mot.getNome());
+                System.out.println("Voce deletou o Motorista: " + mot.getNome());
                 listMotoristas.remove(mot);
+                break;
+            }
+        }
+    }
+    
+    public static Passageiro CriarPassageiro(){
+        System.out.println("Informe o nome: ");
+        String nomePassageiro = ler.nextLine();
+        
+        System.out.println("Informe sua CNH: ");
+        String tell = ler.nextLine();
+        
+        System.out.println("Informe a placa: ");
+        String senha = ler.nextLine();
+        
+        System.out.println("Informe seu CPF: ");
+        String cpfPassageiro = ler.nextLine();
+        
+        Passageiro passageiroAdd = new Passageiro(nomePassageiro, tell, senha, cpfPassageiro);
+        
+        return passageiroAdd;
+    }
+    
+     public static void MostraPassageiro(ArrayList<Passageiro> listaPassageiro, int select){
+        if(select == 0){
+            int idPassageiro = 0;
+              for (Passageiro pas : listaPassageiro){
+                  System.out.println("ID do Passageiro: " + idPassageiro);
+                  System.out.println("Nome do passageiro: " + pas.getNome());
+                  System.out.println("Telefone do Passageiro: " + pas.getTelefone());
+                  //System.out.println("Placa do motorista: " + pas.getSenha());
+                  System.out.println("CPF do Passageiro: " + pas.getCpf());
+              }
+        }
+        if(select == 1){
+          int idPassageiro = 0;
+            for (Passageiro pas : listaPassageiro){
+                System.out.println("\n ID: " + idPassageiro);
+                System.out.println("Nome do Passageiro: " + pas.getNome());                
+            }
+        }
+    }
+     
+      public static void AtualizarPassageiros(ArrayList<Passageiro> listaPassageiro, String nomePassageiro){
+        for(Passageiro pas : listaPassageiro){
+            if(pas.getNome().equals(nomePassageiro)){
+                System.out.println("Aperte para Atualizar Motorista");
+                ler.nextLine();
+
+                System.out.println("Digite o nome do Passageiro:");
+                pas.setNome(ler.nextLine());
+
+                System.out.println("Digite o telefone do Passageiro:");
+                pas.setTelefone(ler.nextLine());
+
+                System.out.println("Digite a Senha:");
+                pas.setSenha(ler.nextLine());
+
+                System.out.println("Digite o cpf:");
+                pas.setCpf(ler.nextLine());
+            }
+        }
+    }
+      
+      public static void DeletarPassageiro(ArrayList<Passageiro> listaPassageiro, String nomePassageiro){
+        for (Passageiro pas : listaPassageiro) {
+            if (pas.getNome().equals(nomePassageiro)){
+                System.out.println("Voce deletou o Motorista: " + pas.getNome());
+                listaPassageiro.remove(pas);
+                break;
             }
         }
     }
