@@ -10,10 +10,10 @@ public class Corrida {
     private double preco;
     private int tempo;
     private double distancia;
-    private ArrayList<Motorista> motorista;
-    private ArrayList<Passageiro> passageiro;
+    private Motorista motorista;
+    private Passageiro passageiro;
     
-    public Corrida(double price, int time, double distance, ArrayList<Motorista> driver, ArrayList<Passageiro> passenger){
+    public Corrida(double price, int time, double distance, Motorista driver, Passageiro passenger){
         preco = price;
         tempo = time;
         distancia = distance;
@@ -52,22 +52,22 @@ public class Corrida {
     }
 
 
-    public ArrayList<Motorista> getMotorista() {
+    public Motorista getMotorista() {
         return motorista;
     }
 
 
-    public void setMotorista(ArrayList<Motorista> motorista) {
+    public void setMotorista(Motorista motorista) {
         this.motorista = motorista;
     }
 
 
-    public ArrayList<Passageiro> getPassageiro() {
+    public Passageiro getPassageiro() {
         return passageiro;
     }
 
 
-    public void setPassageiro(ArrayList<Passageiro> passageiro) {
+    public void setPassageiro(Passageiro passageiro) {
         this.passageiro = passageiro;
     }
     

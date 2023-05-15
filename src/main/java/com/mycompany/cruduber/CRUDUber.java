@@ -7,8 +7,9 @@ public class CRUDUber {
     public static void main(String[] args) {
        ArrayList<Motorista> listaMotoristas = new ArrayList<Motorista>();
        ArrayList<Passageiro> listaPassageiros =  new ArrayList<Passageiro>();
-       
-              MostraMotoristas(listaMotoristas, 0);
+       //array de corridas
+       MostraMotoristas(listaMotoristas, 0);
+       ArrayList<Corrida> listaDeCorrida = new ArrayList<Corrida>();
 
        listaMotoristas.add(CriarMotorista());
        MostraMotoristas(listaMotoristas, 0);
@@ -159,6 +160,47 @@ public class CRUDUber {
                 System.out.println("Voce deletou o Motorista: " + pas.getNome());
                 listaPassageiro.remove(pas);
                 break;
+            }
+        }
+    }
+      //funçao criar corrida - um passageiro e um motorista 
+    //criarcorrida(passa a moto a)
+      
+    public static Corrida CriarCorrida(ArrayList<Motorista> mot, ArrayList<Passageiro> passa){
+        
+        System.out.println("Digite o preço:");
+        double precoUber = ler.nextInt();
+        
+        System.out.println("Digite o tempo:");
+        int tempoUber = ler.nextInt();
+        
+        System.out.println("Digite a distancia:");
+        double distanciaUber = ler.nextInt();
+        
+        MostraMotoristas(mot, 1);
+        System.out.println("Digite um ID do motorista que quer adicionar corrida? ");
+        int motoristaSelecionado = ler.nextInt();
+
+        MostraPassageiro(passa, 1);
+        System.out.println("Digite um ID do passageiro que quer adicionar corrida? ");
+        int passageiroSelecionado = ler.nextInt();
+        
+        Corrida corridaAdd = new Corrida(precoUber, tempoUber, distanciaUber, mot.get(motoristaSelecionado), passa.get(passageiroSelecionado));
+                
+
+        return corridaAdd;
+    }
+    
+    public static void MostrarCorrida( ArrayList<Corrida> listCorrida, int select){
+            if(select == 0){
+            int idPassageiro = 0;
+              for (Corrida cor : listCorrida){
+                  System.out.println("ID do Passageiro: " + idPassageiro);
+                  System.out.println("Nome do passageiro: " + cor.getPreco());
+                  System.out.println("Tempo da Corrida: " + cor.getTempo());
+                  System.out.println("Distancia da Corrida: " + cor.getDistancia());
+                  System.out.println("Nome do Passageiro: " + cor.getPassageiro().getNome());
+                  System.out.println("Nome do Motorista: " + cor.getMotorista().getNome());
             }
         }
     }
